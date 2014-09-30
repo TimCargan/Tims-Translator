@@ -5,12 +5,15 @@ def load(name ):
     with open('obj/' + name + '.pkl', 'r') as f:
         return pickle.load(f)
 
+print "Opening file..."
 unigram = load("unigrams")
 
-wordCount = 0
-for word in unigram:
-	wordCount += unigram[word]
 
-print unigram
+
 print "unigrams {:d}".format(len(unigram))
-print "Number of words {:d}".format(wordCount)
+
+while text != "exit!":
+	text = "{}".format(raw_input("Enter a sentance: "))
+	search = hash(text)
+	print unigram[search]
+
