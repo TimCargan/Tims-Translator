@@ -22,6 +22,7 @@ def splitSentances(text):
 		sentances = p.split(". ")
 		#need to add exeptions
 		#sentances = rejoin(sentances)
+		#the data we are processing is bad.
 		allSentacnes += sentances
 	return allSentacnes
 

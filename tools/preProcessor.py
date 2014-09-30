@@ -1,7 +1,7 @@
 import pickle
 
 print "opening file"
-rawText = open("english.en").read()
+rawText = open("data/testenglish.en").read()
 rawText = rawText.split("\n")
 
 trigrams = {}
@@ -71,15 +71,16 @@ def save(obj, name ):
     with open('obj/'+ name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
-def load(name ):
+def load(name):
     with open('obj/' + name + '.pkl', 'r') as f:
         return pickle.load(f)
 
 count = 1
-lenght = len(rawText)
+length = len(rawText)
 print "File open, starting processing..."
 for line in rawText:
 	preProcess(line, count, length)
+	count += 1
 
 print "Saving..."
 save(trigrams, "trigrams")

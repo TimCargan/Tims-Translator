@@ -1,6 +1,6 @@
 import math
 
-english = open("testData.text").read()
+english = open("data/testData.text").read()
 #english = english.replace(", ", "")
 #english = english.replace(". ", "")
 PXYZ = 0.8
@@ -61,7 +61,7 @@ def trigramS(x, y, z):
 	except ZeroDivisionError:
 		p2 = 0
 
-	p3 = PZ * (cz / float(len(english)))
+	p3 = PZ * (cz / float(len(english)/5))
 	p4 = PB
 
 	return p1 + p2 + p3 + p4
