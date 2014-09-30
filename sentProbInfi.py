@@ -74,11 +74,11 @@ def trigramS(x, y, z):
 #get element for array or reutrn "" if index is not valid
 def getFromAray(aray, index):
 	if index < 0 :
-		return ""
+		return "*#es#*"
 	try:
 		return aray[index]
 	except IndexError: 
-		return ""
+		return "*#es#*"
 
 #return the number of accurences in the test data 
 def numOfAcc(search, type):
