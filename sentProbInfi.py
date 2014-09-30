@@ -130,7 +130,7 @@ for s in testData:
 
 text = ""
 while text != "exit!":
-	text = input("enter a sentance:")
+	text = "{}".format(raw_input("Enter a sentance: "))
 	print calcStringP(text)
 
 
