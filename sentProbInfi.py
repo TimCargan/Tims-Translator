@@ -17,13 +17,11 @@ def calcStringP(pString):
 		z = getFromAray(pString, word + 2)
 
 		prob = nGram (x, y, z)
-
-		#print "b({:s}|{:s}) = {:f}".format(z, join([x,y]), prob)
 		stringProb.append(prob)
 
 	prob = multiLog(stringProb) / len(pString)
-	end = "P({:s}) = {:f}".format(oString, prob)
-	return end
+	result = "P({:s}) = {:f}".format(oString, prob)
+	return reslut
 
 
 def nGram (x, y, z):
@@ -130,6 +128,10 @@ testData.append("This is when we where how this isn't even english words just ra
 for s in testData:
 	print calcStringP(s)
 
+text = ""
+while text != "exit!":
+	text = input("enter a sentance:")
+	print calcStringP(text)
 
 
 
