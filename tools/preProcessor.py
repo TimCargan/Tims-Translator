@@ -1,7 +1,11 @@
 import pickle
 
 print "opening file"
+<<<<<<< HEAD
 rawText = open("split.en").read()
+=======
+rawText = open("data/testenglish.en").read()
+>>>>>>> e924fe66749110950e74c37c1c7c88712e4ceb71
 rawText = rawText.split("\n")
 
 trigrams = {}
@@ -71,7 +75,7 @@ def save(obj, name ):
     with open('obj/'+ name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
-def load(name ):
+def load(name):
     with open('obj/' + name + '.pkl', 'r') as f:
         return pickle.load(f)
 
