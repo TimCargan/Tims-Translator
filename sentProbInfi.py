@@ -20,7 +20,7 @@ def calcStringP(pString):
 		stringProb.append(prob)
 
 		print "b({:s}|{:s}) = {:f}".format(z, join([x,y]), prob)
-		
+
 	prob = multiLog(stringProb) / len(pString)
 	result = "P({:s}) = {:f}".format(oString, prob)
 	return result
@@ -83,7 +83,7 @@ def getFromAray(aray, index):
 #return the number of accurences in the test data 
 def numOfAcc(search, type):
 	acc = 0
-	searchHash = hash(search)
+	search = hash(search)
 	#search the trigram file
 	if type == "t":
 		try:
