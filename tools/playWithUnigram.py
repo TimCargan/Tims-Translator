@@ -12,6 +12,7 @@ unigram = load("unigrams")
 
 print "unigrams {:d}".format(len(unigram))
 
+text = ""
 while text != "exit!":
 	text = "{}".format(raw_input("Enter a sentance: "))
 	search = hash(text)
