@@ -1,8 +1,6 @@
 import math
+import pickle
 
-english = open("data/testData.text").read()
-#english = english.replace(", ", "")
-#english = english.replace(". ", "")
 PXYZ = 0.8
 PYZ = 0.15
 PZ = 0.049
@@ -78,12 +76,26 @@ def getFromAray(aray, index):
 
 #return the number of accurences in the test data 
 def numOfAcc(search, type):
-	index = english.find(search, 0)
 	acc = 0
-	while ( index > 0):
-		acc+= 1
-		index = english.find(search, index + 1)
-	return acc
+	searchHash = hash(search)
+	#search the trigram file
+	if type == "t":
+		try:
+			return trigrams[search]
+		except KeyError:
+			return 0
+	#search Bigrams
+	if type == "b":
+		try:
+			return bigrams[search]
+		except KeyError:
+			return 0
+	#Search Unigrams (words)
+	if type == "u":
+		try:
+			return unigrams[search]
+		except KeyError:
+			return 0
 
 # return the sum of the logs of a list of numbers
 def multiLog(numbers):
@@ -99,9 +111,18 @@ def join(strings):
 		r += word +  " "
 	return r.strip()
 
+def load(name):
+    with open('tools/obj/' + name + '.pkl', 'r') as f:
+        return pickle.load(f)
+
 print "PXYZ {:f}".format(PXYZ)
 print "PYZ {:f}".format(PYZ)
 
+#load files
+print "loading files..."
+trigrams = load("trigrams")
+bigrams = load("bigrams")
+unigrams = load("unigrams")
 
 testData = "The other problem relates to the immigration issue noted above. In many ways, people with STEM expertise are most needed in the developing world, where the projects they create and industries they start will have the largest impact. But the mismatches between education and industry's needs in the developed nations drives a brain drain that sucks talent from the developing world. Again, this occurs despite the fact that schools here are producing a lot of STEM graduates."
 testData = testData.split(".")
