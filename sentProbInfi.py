@@ -21,7 +21,7 @@ def calcStringP(pString):
 
 	prob = multiLog(stringProb) / len(pString)
 	result = "P({:s}) = {:f}".format(oString, prob)
-	return reslut
+	return result
 
 
 def nGram (x, y, z):
