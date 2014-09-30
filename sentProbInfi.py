@@ -1,8 +1,8 @@
 import math
 import pickle
 
-PXYZ = 0.8
-PYZ = 0.15
+PXYZ = 0.475
+PYZ = 0.475
 PZ = 0.049
 PB = 0.001
 

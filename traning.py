@@ -130,18 +130,27 @@ trigrams = load("trigrams")
 bigrams = load("bigrams")
 unigrams = load("unigrams")
 
-testData = "The other problem relates to the immigration issue noted above. In many ways, people with STEM expertise are most needed in the developing world, where the projects they create and industries they start will have the largest impact. But the mismatches between education and industry's needs in the developed nations drives a brain drain that sucks talent from the developing world. Again, this occurs despite the fact that schools here are producing a lot of STEM graduates. This is when we where how this isn't even english words just random text not here"
-testData = testData.split(".")
-#PXYZ = 0.8
-#PYZ = 0.15
-for i in range (1, 50):
-	PXYZ -= 0.025
-	PYZ += 0.025
-	print PXYZ
-	print PYZ
-	for s in testData:
-		 calcStringP(s)
+#testData.append("The other problem relates to the immigration issue noted above")
+#testData.append("In many ways, people with STEM expertise are most needed in the developing world, where the projects they create and industries they start will have the largest impact")
+#testData.append("But the mismatches between education and industry's needs in the developed nations drives a brain drain that sucks talent from the developing world")
+#testData.append("Again, this occurs despite the fact that schools here are producing a lot of STEM graduates")
+#testData.append("Again, this occurs despite the fact that schools here are producing a lot of STEM graduates")
+#testData.append("This is when we where how this isn't even english words just random text not here")
+testData = [[{"This is a good sentance", 1}, {"This a sentance good", 0}],
+			[{"This is someting I would say", 1}, {"say This somethg would say I", 0}],
+			[{"The other proble relates to the immigration issue noted above", 2}, {"other The problem realtes to immigration the issue above noted", 1}
+			{"problem the other relates immigration the to noted issue above", 0}]
+			]
 
+PXYZ = 0.8
+PYZ = 0.15
+while ((PYZ < 1) & (PXYZ > 0)):
+PXYZ -= 0.025
+PYZ += 0.025
+print PXYZ
+print PYZ
+
+		
 
 
 
