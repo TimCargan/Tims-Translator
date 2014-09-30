@@ -4,7 +4,6 @@ import os
 print "Opening file..."
 
 rawText = open("split.en").read()
-rawText = open("data/testenglish.en").read()
 rawText = rawText.split("\n")
 
 trigrams = {}
@@ -87,9 +86,9 @@ for line in rawText:
 	preProcess(line, count, length)
 	count += 1
 
-print "Saving..."
+print "Saving Trigrams..."
 save(trigrams, "trigrams")
-print "Saving..."
+print "Saving Bigrams..."
 save(bigrams, "bigrams")
-print "Saving..."
+print "Saving Unigrams..."
 save(unigrams, "unigrams")
