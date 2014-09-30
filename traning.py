@@ -144,12 +144,16 @@ testData = [[{"This is a good sentance", 1}, {"This a sentance good", 0}],
 
 PXYZ = 0.8
 PYZ = 0.15
-while ((PYZ < 1) & (PXYZ > 0)):
-PXYZ -= 0.025
-PYZ += 0.025
-print PXYZ
-print PYZ
+results[]
 
+while ((PYZ < 1) & (PXYZ > 0)):
+	PXYZ -= 0.025
+	PYZ += 0.025
+	print PXYZ
+	print PYZ
+	for sentObs in testData:
+		for sentance in sentObs:
+			
 		
 
 

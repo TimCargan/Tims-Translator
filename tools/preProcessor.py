@@ -1,11 +1,10 @@
 import pickle
+import os
 
-print "opening file"
-<<<<<<< HEAD
+print "Opening file..."
+
 rawText = open("split.en").read()
-=======
 rawText = open("data/testenglish.en").read()
->>>>>>> e924fe66749110950e74c37c1c7c88712e4ceb71
 rawText = rawText.split("\n")
 
 trigrams = {}
@@ -50,7 +49,7 @@ def preProcess(line, c, l):
 		else:
 			unigrams[unigram] = 1
 		
-
+	os.system('cls' if os.name=='nt' else 'clear')
 	print "Processed {:d}/{:d}: {:s}".format(c, l, line)
 
 
@@ -78,6 +77,8 @@ def save(obj, name ):
 def load(name):
     with open('obj/' + name + '.pkl', 'r') as f:
         return pickle.load(f)
+
+
 
 count = 1
 length = len(rawText)
