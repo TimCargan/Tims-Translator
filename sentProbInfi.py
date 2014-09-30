@@ -19,6 +19,8 @@ def calcStringP(pString):
 		prob = nGram (x, y, z)
 		stringProb.append(prob)
 
+		print "b({:s}|{:s}) = {:f}".format(z, join([x,y]), prob)
+		
 	prob = multiLog(stringProb) / len(pString)
 	result = "P({:s}) = {:f}".format(oString, prob)
 	return result
@@ -46,6 +48,12 @@ def trigramS(x, y, z):
 	cxy = numOfAcc(join([x,y]), "b")
 	cyz = numOfAcc(join([y,z]), "b")
 	cz = numOfAcc(join([z]), "u")
+
+	print "cxyz: {:d}".format(cxyz)
+	print "cxy: {:d}".format(cxy)
+	print "cyz: {:d}".format(cyz)
+	print "cxz: {:d}".format(cz)
+
 	#added try catched to handle zero exeptions
 	try:
 		p1 = PXYZ * (cxyz / float(cxy))
