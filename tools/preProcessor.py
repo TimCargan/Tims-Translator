@@ -1,7 +1,7 @@
 import pickle
 
 print "opening file"
-rawText = open("english.en").read()
+rawText = open("split.en").read()
 rawText = rawText.split("\n")
 
 trigrams = {}
@@ -47,7 +47,7 @@ def preProcess(line, c, l):
 			unigrams[unigram] = 1
 		
 
-	print "Processed {:d}/{:d}: {:s}".format(line, c, l)
+	print "Processed {:d}/{:d}: {:s}".format(c, l, line)
 
 
 
@@ -76,10 +76,11 @@ def load(name ):
         return pickle.load(f)
 
 count = 1
-lenght = len(rawText)
+length = len(rawText)
 print "File open, starting processing..."
 for line in rawText:
 	preProcess(line, count, length)
+	count += 1
 
 print "Saving..."
 save(trigrams, "trigrams")

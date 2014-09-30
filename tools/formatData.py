@@ -1,4 +1,4 @@
-text = open("testData.txt").read()
+text = open("unsplit.en").read()
 #noBreak = open(noB)
 output = open ("split.en", "w")
 
