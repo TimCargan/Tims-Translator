@@ -134,7 +134,7 @@ testData = "The other problem relates to the immigration issue noted above. In m
 testData = testData.split(".")
 #PXYZ = 0.8
 #PYZ = 0.15
-for i in range (1, 50)
+for i in range (1, 50):
 	PXYZ -= 0.025
 	PYZ += 0.025
 	print PXYZ
