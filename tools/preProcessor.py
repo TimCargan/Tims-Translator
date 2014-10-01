@@ -1,14 +1,31 @@
 import pickle
 import os
 
-print "Opening file..."
-
-rawText = open("split.en").read()
-rawText = rawText.split("\n")
-
+DATA_PATH = "../data/"
 trigrams = {}
 bigrams = {}
 unigrams = {}
+
+#Entry point for the file
+def main():
+	print "Opening file..."
+	rawText = open(DATA_PATH + "split.en").read()
+	rawText = rawText.split("\n")
+
+	count = 1
+	length = len(rawText)
+	print "File open, starting processing..."
+	for line in rawText:
+		preProcess(line, count, length)
+		count += 1
+
+	print "Saving Trigrams..."
+	save(trigrams, "trigrams")
+	print "Saving Bigrams..."
+	save(bigrams, "bigrams")
+	print "Saving Unigrams..."
+	save(unigrams, "unigrams")
+
 
 #Bigest flaw is that it trigram cant deal with less than 3 words
 def preProcess(line, c, l):
@@ -70,25 +87,10 @@ def join(strings):
 	return r.strip()
 
 def save(obj, name ):
-    with open('obj/'+ name + '.pkl', 'wb') as f:
+    with open(DATA_PATH + 'obj/'+ name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
 def load(name):
-    with open('obj/' + name + '.pkl', 'r') as f:
+    with open(DATA_PATH + 'obj/' + name + '.pkl', 'r') as f:
         return pickle.load(f)
 
-
-
-count = 1
-length = len(rawText)
-print "File open, starting processing..."
-for line in rawText:
-	preProcess(line, count, length)
-	count += 1
-
-print "Saving Trigrams..."
-save(trigrams, "trigrams")
-print "Saving Bigrams..."
-save(bigrams, "bigrams")
-print "Saving Unigrams..."
-save(unigrams, "unigrams")
