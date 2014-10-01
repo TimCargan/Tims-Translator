@@ -94,3 +94,4 @@ def load(name):
     with open(DATA_PATH + 'obj/' + name + '.pkl', 'r') as f:
         return pickle.load(f)
 
+main()
