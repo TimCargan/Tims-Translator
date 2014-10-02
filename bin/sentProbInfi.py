@@ -1,6 +1,8 @@
 import math
 import pickle
 
+DATA_PATH = "../data/"
+
 PXYZ = 0.475
 PYZ = 0.475
 PZ = 0.049
@@ -118,7 +120,7 @@ def join(strings):
 	return r.strip()
 
 def load(name):
-    with open('tools/obj/' + name + '.pkl', 'r') as f:
+    with open(DATA_PATH + 'obj/' + name + '.pkl', 'r') as f:
         return pickle.load(f)
 
 print "PXYZ {:f}".format(PXYZ)
