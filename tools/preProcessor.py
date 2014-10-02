@@ -18,7 +18,7 @@ def main():
 	for line in rawText:
 		preProcess(line, count, length)
 		count += 1
-		if count % 1000 = 0:
+		if count % 10000 == 0:
 			print "Processed {:d}/{:d}".format(count, length)
 
 	print "Saving Trigrams..."
