@@ -42,7 +42,7 @@ def preProcess(line, c, l):
 		bigram2 = join([y,z])
 		unigram = z
 
-		trigam = hash(trigram)
+		trigram = hash(trigram)
 		bigram1 = hash(bigram1)
 		bigram2 = hash(bigram2)
 		unigram = hash(unigram)

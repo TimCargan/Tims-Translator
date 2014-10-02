@@ -9,30 +9,32 @@ PZ = 0.049
 PB = 0.001
 
 #Bigest flaw is that it trigram cant deal with less than 3 words
-def calcStringP(pString):
-	oString = pString
-	pString = pString.split(" ")
+def calcStringP(string):
+	string = formatSentance(string)
+	outputString = string
+
+	string = string.split(" ")
 	stringProb = []
-	for word in range(-2, len(pString)):
-		x = getFromAray(pString, word)
-		y = getFromAray(pString, word + 1)
-		z = getFromAray(pString, word + 2)
+
+	for word in range(-2, len(string)):
+		x = getFromAray(string, word)
+		y = getFromAray(string, word + 1)
+		z = getFromAray(string, word + 2)
 
 		prob = nGram (x, y, z)
 		stringProb.append(prob)
 
 		print "b({:s}|{:s}) = {:f}".format(z, join([x,y]), prob)
 
-	prob = multiLog(stringProb) / len(pString)
-	result = "P({:s}) = {:f}".format(oString, prob)
+	prob = multiLog(stringProb) / len(string)
+	result = "P({:s}) = {:f}".format(outputString, prob)
 	return result
 
 
 def nGram (x, y, z):
 	if((x != "") & (y != "") & (z !="")):
 		return trigramS(x, y, z)
-	else:
-		return 0.5
+	return 1
 
 def bigram(x,y):
 	cxy = numOfAcc(join([x,y]))
@@ -50,11 +52,6 @@ def trigramS(x, y, z):
 	cxy = numOfAcc(join([x,y]), "b")
 	cyz = numOfAcc(join([y,z]), "b")
 	cz = numOfAcc(join([z]), "u")
-
-	print "cxyz: {:d}".format(cxyz)
-	print "cxy: {:d}".format(cxy)
-	print "cyz: {:d}".format(cyz)
-	print "cxz: {:d}".format(cz)
 
 	#added try catched to handle zero exeptions
 	try:
@@ -85,11 +82,13 @@ def getFromAray(aray, index):
 #return the number of accurences in the test data 
 def numOfAcc(search, type):
 	acc = 0
+	noHash = search
 	search = hash(search)
+
 	#search the trigram file
 	if type == "t":
 		try:
-			return trigrams[search]
+			return trigrams[noHash]
 		except KeyError:
 			return 0
 	#search Bigrams
@@ -123,6 +122,11 @@ def load(name):
     with open(DATA_PATH + 'obj/' + name + '.pkl', 'r') as f:
         return pickle.load(f)
 
+def formatSentance(string):
+	string = string.strip()
+	string = string.lower()
+	return string
+	
 print "PXYZ {:f}".format(PXYZ)
 print "PYZ {:f}".format(PYZ)
 
@@ -140,7 +144,9 @@ for s in testData:
 
 text = ""
 while text != "exit!":
+	print "\n"
 	text = "{}".format(raw_input("Enter a sentance: "))
+	print "=" * 50
 	print calcStringP(text)
 
 
