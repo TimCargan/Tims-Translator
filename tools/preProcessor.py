@@ -18,6 +18,8 @@ def main():
 	for line in rawText:
 		preProcess(line, count, length)
 		count += 1
+		if count % 1000 = 0:
+			print "Processed {:d}/{:d}".format(count, length)
 
 	print "Saving Trigrams..."
 	save(trigrams, "trigrams")
@@ -65,8 +67,8 @@ def preProcess(line, c, l):
 		else:
 			unigrams[unigram] = 1
 		
-	os.system('cls' if os.name=='nt' else 'clear')
-	print "Processed {:d}/{:d}: {:s}".format(c, l, line)
+	#os.system('cls' if os.name=='nt' else 'clear')
+	#print "Processed {:d}/{:d}: {:s}".format(c, l, line)
 
 
 
