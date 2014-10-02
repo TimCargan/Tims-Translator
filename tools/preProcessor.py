@@ -1,4 +1,4 @@
-import pickle
+import cPickle as pickle
 import os
 
 DATA_PATH = "../data/"
@@ -18,7 +18,7 @@ def main():
 	for line in rawText:
 		preProcess(line, count, length)
 		count += 1
-		if count % 10000 == 0:
+		if count % 100000 == 0:
 			print "Processed {:d}/{:d}".format(count, length)
 
 	print "Saving Trigrams..."
@@ -66,10 +66,6 @@ def preProcess(line, c, l):
 			unigrams[unigram] += 1
 		else:
 			unigrams[unigram] = 1
-		
-	#os.system('cls' if os.name=='nt' else 'clear')
-	#print "Processed {:d}/{:d}: {:s}".format(c, l, line)
-
 
 
 #get element for array or reutrn "" if index is not valid
